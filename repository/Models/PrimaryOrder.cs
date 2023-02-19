@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace order_management.Models
+namespace repository.Models
 {
     public partial class PrimaryOrder
     {
@@ -15,7 +15,6 @@ namespace order_management.Models
         public Guid OrderId { get; set; }
         public Guid EmployeeId { get; set; }
         public DateTime OrderDate { get; set; }
-        public string Note { get; set; }
         public double Total { get; set; }
         public int Status { get; set; }
 

@@ -38,33 +38,36 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(130, 61);
+            this.btnSearch.Location = new System.Drawing.Point(311, 23);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(77, 26);
+            this.btnSearch.Size = new System.Drawing.Size(77, 29);
             this.btnSearch.TabIndex = 0;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             // 
             // dgvOrder
             // 
+            this.dgvOrder.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvOrder.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.dgvOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOrder.Location = new System.Drawing.Point(12, 104);
+            this.dgvOrder.Location = new System.Drawing.Point(12, 68);
             this.dgvOrder.Name = "dgvOrder";
             this.dgvOrder.RowTemplate.Height = 25;
-            this.dgvOrder.Size = new System.Drawing.Size(776, 319);
+            this.dgvOrder.Size = new System.Drawing.Size(776, 355);
             this.dgvOrder.TabIndex = 1;
             // 
             // txtOrderID
             // 
-            this.txtOrderID.Location = new System.Drawing.Point(130, 32);
+            this.txtOrderID.Location = new System.Drawing.Point(130, 23);
+            this.txtOrderID.Multiline = true;
             this.txtOrderID.Name = "txtOrderID";
-            this.txtOrderID.Size = new System.Drawing.Size(175, 23);
+            this.txtOrderID.Size = new System.Drawing.Size(175, 29);
             this.txtOrderID.TabIndex = 2;
             // 
             // lbOrderID
             // 
             this.lbOrderID.AutoSize = true;
-            this.lbOrderID.Location = new System.Drawing.Point(15, 35);
+            this.lbOrderID.Location = new System.Drawing.Point(15, 30);
             this.lbOrderID.Name = "lbOrderID";
             this.lbOrderID.Size = new System.Drawing.Size(109, 15);
             this.lbOrderID.TabIndex = 3;
@@ -72,9 +75,9 @@
             // 
             // btnAddNewOrder
             // 
-            this.btnAddNewOrder.Location = new System.Drawing.Point(637, 61);
+            this.btnAddNewOrder.Location = new System.Drawing.Point(637, 23);
             this.btnAddNewOrder.Name = "btnAddNewOrder";
-            this.btnAddNewOrder.Size = new System.Drawing.Size(151, 26);
+            this.btnAddNewOrder.Size = new System.Drawing.Size(151, 29);
             this.btnAddNewOrder.TabIndex = 4;
             this.btnAddNewOrder.Text = "Add new order";
             this.btnAddNewOrder.UseVisualStyleBackColor = true;
