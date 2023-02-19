@@ -1,10 +1,15 @@
+using Repository.Services;
+
 namespace order_management
 {
-    public partial class Form1 : Form
+    public partial class Profit_Report : Form
     {
-        public Form1()
+        EmployeeService employeeService= new EmployeeService();
+        public Profit_Report()
         {
             InitializeComponent();
+            var listEmployee = employeeService.GetAll();
+            dgvDemo.DataSource = listEmployee;
         }
     }
 }

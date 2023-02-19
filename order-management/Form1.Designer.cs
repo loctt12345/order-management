@@ -1,6 +1,6 @@
 ﻿namespace order_management
 {
-    partial class Form1
+    partial class Profit_Report
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,12 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.dgvDemo = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDemo)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // dgvDemo
+            // 
+            this.dgvDemo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDemo.Location = new System.Drawing.Point(63, 72);
+            this.dgvDemo.Name = "dgvDemo";
+            this.dgvDemo.RowHeadersWidth = 51;
+            this.dgvDemo.RowTemplate.Height = 29;
+            this.dgvDemo.Size = new System.Drawing.Size(626, 223);
+            this.dgvDemo.TabIndex = 0;
+            // 
+            // Profit_Report
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.Controls.Add(this.dgvDemo);
+            this.Name = "Profit_Report";
+            this.Text = "Profit_Report";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDemo)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private DataGridView dgvDemo;
     }
 }
