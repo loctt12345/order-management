@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace repository.Models
+namespace Repository.Models
 {
     public partial class CoffeeShopManagementContext : DbContext
     {

@@ -32,7 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lbPrice = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtQuantity = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtNote = new System.Windows.Forms.TextBox();
             this.btnAddOrderDetail = new System.Windows.Forms.Button();
@@ -78,12 +78,12 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Quantity : ";
             // 
-            // textBox1
+            // txtQuantity
             // 
-            this.textBox1.Location = new System.Drawing.Point(170, 94);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(92, 23);
-            this.textBox1.TabIndex = 4;
+            this.txtQuantity.Location = new System.Drawing.Point(170, 94);
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.Size = new System.Drawing.Size(92, 23);
+            this.txtQuantity.TabIndex = 4;
             // 
             // label3
             // 
@@ -121,7 +121,7 @@
             this.Controls.Add(this.btnAddOrderDetail);
             this.Controls.Add(this.txtNote);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtQuantity);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lbPrice);
             this.Controls.Add(this.label1);
@@ -139,7 +139,7 @@
         private Label label1;
         private Label lbPrice;
         private Label label2;
-        private TextBox textBox1;
+        private TextBox txtQuantity;
         private Label label3;
         private TextBox txtNote;
         private Button btnAddOrderDetail;

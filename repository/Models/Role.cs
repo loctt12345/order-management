@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace repository.Models
+namespace Repository.Models
 {
     public partial class Role
     {
