@@ -29,12 +29,18 @@ namespace Repository
         {
             var tracker = _context.Attach(entity);
             tracker.State = EntityState.Modified;
+
             _context.SaveChanges();
         }
         public void Delete(T entity)
         {
             _dbSet.Remove(entity);
             _context.SaveChanges();
+        }
+
+        public T Find(Guid id)
+        {
+            return _dbSet.Find(id);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace order_management
 {
-    partial class Profit_Report
+    partial class Chef_Display
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,35 +28,61 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvDemo = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDemo)).BeginInit();
+            this.btnConfirm = new System.Windows.Forms.Button();
+            this.dgvShowData = new System.Windows.Forms.DataGridView();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvShowData)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgvDemo
+            // btnConfirm
             // 
-            this.dgvDemo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDemo.Location = new System.Drawing.Point(63, 72);
-            this.dgvDemo.Name = "dgvDemo";
-            this.dgvDemo.RowHeadersWidth = 51;
-            this.dgvDemo.RowTemplate.Height = 29;
-            this.dgvDemo.Size = new System.Drawing.Size(626, 223);
-            this.dgvDemo.TabIndex = 0;
+            this.btnConfirm.Location = new System.Drawing.Point(545, 405);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(214, 55);
+            this.btnConfirm.TabIndex = 3;
+            this.btnConfirm.Text = "Confirm";
+            this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
-            // Profit_Report
+            // dgvShowData
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.dgvShowData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvShowData.Location = new System.Drawing.Point(42, 81);
+            this.dgvShowData.Name = "dgvShowData";
+            this.dgvShowData.RowTemplate.Height = 25;
+            this.dgvShowData.Size = new System.Drawing.Size(738, 300);
+            this.dgvShowData.TabIndex = 2;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(42, 29);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(108, 46);
+            this.btnRefresh.TabIndex = 4;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // Chef_Display
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dgvDemo);
-            this.Name = "Profit_Report";
-            this.Text = "Profit_Report";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDemo)).EndInit();
+            this.ClientSize = new System.Drawing.Size(837, 472);
+            this.Controls.Add(this.btnRefresh);
+            this.Controls.Add(this.btnConfirm);
+            this.Controls.Add(this.dgvShowData);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Name = "Chef_Display";
+            this.Text = "Chef_Display";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvShowData)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DataGridView dgvDemo;
+        private Button btnConfirm;
+        private DataGridView dgvShowData;
+        private Button btnRefresh;
     }
 }
