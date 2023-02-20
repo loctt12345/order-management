@@ -13,6 +13,8 @@ namespace Repository.Models
         public int Quantity { get; set; }
         public double Amount { get; set; }
         public DateTime OrderDate { get; set; }
+        public string Note { get; set; }
+        public bool Status { get; set; }
 
         public virtual PrimaryOrder Order { get; set; }
         public virtual Product Product { get; set; }

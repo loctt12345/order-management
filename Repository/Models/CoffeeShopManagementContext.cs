@@ -124,6 +124,8 @@ namespace Repository.Models
                 entity.ToTable("Role");
 
                 entity.Property(e => e.RoleId).ValueGeneratedNever();
+
+                entity.Property(e => e.RoleName).IsRequired();
             });
 
             modelBuilder.Entity<Status>(entity =>

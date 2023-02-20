@@ -7,35 +7,42 @@ using System.Threading.Tasks;
 
 namespace Repository.Services
 {
-    public interface IEmployeeService
+    //public interface IEmployeeService
+    //{
+    //    public void Create(Employee employee);
+    //    public void Update(Employee employee);
+    //    public void Delete(Employee employee);
+    //    public List<Employee> GetAll();
+    //}
+    public class EmployeeService /*: IEmployeeService*/:RepositoryBase<Employee>
     {
-        public void Create(Employee employee);
-        public void Update(Employee employee);
-        public void Delete(Employee employee);
-        public List<Employee> GetAll();
+        //private readonly RepositoryBase<Employee> _emloyeeService;
+        //public EmployeeService() { }
+
+        //public EmployeeService(RepositoryBase<Employee> emloyeeService)
+        //{
+        //    _emloyeeService = emloyeeService;
+        //}
+
+        //public void Create(Employee employee)
+        //{
+        //    _emloyeeService.Create(employee);
+        //}
+
+        //public void Delete(Employee employee)
+        //{
+        //    _emloyeeService.Delete(employee);
+        //}
+
+        //public List<Employee> GetAll()
+        //{
+        //    return _emloyeeService.GetAll().ToList();
+        //}
+
+        //public void Update(Employee employee)
+        //{
+        //    _emloyeeService.Update(employee);
+        //}
     }
-    public class EmployeeService : IEmployeeService
-    {
-        private RepositoryBase<Employee> _employeeRepo = new RepositoryBase<Employee>();
-        public EmployeeService() { }
-        public void Create(Employee employee)
-        {
-            _employeeRepo.Create(employee);
-        }
 
-        public void Delete(Employee employee)
-        {
-            _employeeRepo.Delete(employee);
-        }
-
-        public List<Employee> GetAll()
-        {
-           return _employeeRepo.GetAll().ToList();
-        }
-
-        public void Update(Employee employee)
-        {
-            _employeeRepo.Update(employee);
-        }
-    }
 }
