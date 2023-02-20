@@ -36,7 +36,6 @@ namespace order_management
                 OrderDetailsId = Guid.NewGuid(),
                 OrderId = this.order.OrderId,
                 ProductId = this.product.ProductId,
-                Product = this.product,
                 Quantity = int.Parse(txtQuantity.Text),
                 Amount = int.Parse(txtQuantity.Text) * product.Price,
                 Note = txtNote.Text,
@@ -54,11 +53,17 @@ namespace order_management
             row["Price"] = this.product.Price;
             row["Amount"] = orderDetail.Amount;
             row["Note"] = orderDetail.Note;
+            row["ProductId"] = orderDetail.ProductId;
             dt.Rows.Add(row);
             dt.AcceptChanges();
 
             this.Close();
             
+        }
+
+        private void txtCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

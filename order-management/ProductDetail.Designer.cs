@@ -32,10 +32,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lbPrice = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtQuantity = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtNote = new System.Windows.Forms.TextBox();
             this.btnAddOrderDetail = new System.Windows.Forms.Button();
+            this.txtQuantity = new System.Windows.Forms.NumericUpDown();
+            this.txtCancel = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQuantity)).BeginInit();
             this.SuspendLayout();
             // 
             // lbProductName
@@ -78,13 +80,6 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Quantity : ";
             // 
-            // txtQuantity
-            // 
-            this.txtQuantity.Location = new System.Drawing.Point(170, 94);
-            this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(92, 23);
-            this.txtQuantity.TabIndex = 4;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -113,21 +108,40 @@
             this.btnAddOrderDetail.UseVisualStyleBackColor = true;
             this.btnAddOrderDetail.Click += new System.EventHandler(this.btnAddOrderDetail_Click);
             // 
+            // txtQuantity
+            // 
+            this.txtQuantity.Location = new System.Drawing.Point(170, 96);
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.Size = new System.Drawing.Size(63, 23);
+            this.txtQuantity.TabIndex = 8;
+            // 
+            // txtCancel
+            // 
+            this.txtCancel.Location = new System.Drawing.Point(247, 216);
+            this.txtCancel.Name = "txtCancel";
+            this.txtCancel.Size = new System.Drawing.Size(91, 33);
+            this.txtCancel.TabIndex = 9;
+            this.txtCancel.Text = "Cancel";
+            this.txtCancel.UseVisualStyleBackColor = true;
+            this.txtCancel.Click += new System.EventHandler(this.txtCancel_Click);
+            // 
             // ProductDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 261);
+            this.Controls.Add(this.txtCancel);
+            this.Controls.Add(this.txtQuantity);
             this.Controls.Add(this.btnAddOrderDetail);
             this.Controls.Add(this.txtNote);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtQuantity);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lbPrice);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbProductName);
             this.Name = "ProductDetail";
             this.Text = "ProductDetail";
+            ((System.ComponentModel.ISupportInitialize)(this.txtQuantity)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,9 +153,10 @@
         private Label label1;
         private Label lbPrice;
         private Label label2;
-        private TextBox txtQuantity;
         private Label label3;
         private TextBox txtNote;
         private Button btnAddOrderDetail;
+        private NumericUpDown txtQuantity;
+        private Button txtCancel;
     }
 }

@@ -56,6 +56,7 @@
             this.btnSubmitOrder.TabIndex = 1;
             this.btnSubmitOrder.Text = "Submit order";
             this.btnSubmitOrder.UseVisualStyleBackColor = true;
+            this.btnSubmitOrder.Click += new System.EventHandler(this.btnSubmitOrder_Click);
             // 
             // dgvCurrentOrder
             // 
@@ -68,6 +69,7 @@
             this.dgvCurrentOrder.RowTemplate.Height = 25;
             this.dgvCurrentOrder.Size = new System.Drawing.Size(592, 362);
             this.dgvCurrentOrder.TabIndex = 2;
+            this.dgvCurrentOrder.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCurrentOrder_CellContentClick);
             // 
             // AddOrderScreen
             // 
