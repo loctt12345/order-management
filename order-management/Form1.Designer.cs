@@ -50,7 +50,7 @@
             this.dgvShowData.Location = new System.Drawing.Point(42, 81);
             this.dgvShowData.Name = "dgvShowData";
             this.dgvShowData.RowTemplate.Height = 25;
-            this.dgvShowData.Size = new System.Drawing.Size(738, 300);
+            this.dgvShowData.Size = new System.Drawing.Size(751, 304);
             this.dgvShowData.TabIndex = 2;
             // 
             // btnRefresh

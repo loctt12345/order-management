@@ -18,7 +18,7 @@ namespace Repository
         }
         public IQueryable<T> GetAll()
         {
-            return _dbSet;
+            return _dbSet.AsQueryable();
         }
         public void Create(T entity)
         {
