@@ -38,15 +38,17 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(311, 23);
+            this.btnSearch.Location = new System.Drawing.Point(340, 23);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(77, 29);
             this.btnSearch.TabIndex = 0;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // dgvOrder
             // 
+            this.dgvOrder.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvOrder.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvOrder.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.dgvOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -55,11 +57,12 @@
             this.dgvOrder.RowTemplate.Height = 25;
             this.dgvOrder.Size = new System.Drawing.Size(776, 355);
             this.dgvOrder.TabIndex = 1;
+            this.dgvOrder.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrder_CellContentDoubleClick);
             // 
             // txtOrderID
             // 
-            this.txtOrderID.Location = new System.Drawing.Point(130, 23);
-            this.txtOrderID.Multiline = true;
+            this.txtOrderID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtOrderID.Location = new System.Drawing.Point(148, 23);
             this.txtOrderID.Name = "txtOrderID";
             this.txtOrderID.Size = new System.Drawing.Size(175, 29);
             this.txtOrderID.TabIndex = 2;
@@ -67,15 +70,16 @@
             // lbOrderID
             // 
             this.lbOrderID.AutoSize = true;
-            this.lbOrderID.Location = new System.Drawing.Point(15, 30);
+            this.lbOrderID.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbOrderID.Location = new System.Drawing.Point(12, 29);
             this.lbOrderID.Name = "lbOrderID";
-            this.lbOrderID.Size = new System.Drawing.Size(109, 15);
+            this.lbOrderID.Size = new System.Drawing.Size(130, 17);
             this.lbOrderID.TabIndex = 3;
             this.lbOrderID.Text = "Search by order ID: ";
             // 
             // btnAddNewOrder
             // 
-            this.btnAddNewOrder.Location = new System.Drawing.Point(637, 23);
+            this.btnAddNewOrder.Location = new System.Drawing.Point(637, 24);
             this.btnAddNewOrder.Name = "btnAddNewOrder";
             this.btnAddNewOrder.Size = new System.Drawing.Size(151, 29);
             this.btnAddNewOrder.TabIndex = 4;
@@ -87,6 +91,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnAddNewOrder);
             this.Controls.Add(this.lbOrderID);

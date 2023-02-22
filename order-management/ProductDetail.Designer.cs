@@ -54,7 +54,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(54, 53);
+            this.label1.Location = new System.Drawing.Point(54, 63);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(96, 25);
             this.label1.TabIndex = 1;
@@ -64,7 +64,7 @@
             // 
             this.lbPrice.AutoSize = true;
             this.lbPrice.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbPrice.Location = new System.Drawing.Point(170, 53);
+            this.lbPrice.Location = new System.Drawing.Point(170, 63);
             this.lbPrice.Name = "lbPrice";
             this.lbPrice.Size = new System.Drawing.Size(57, 25);
             this.lbPrice.TabIndex = 2;
@@ -74,7 +74,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(54, 94);
+            this.label2.Location = new System.Drawing.Point(54, 104);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(104, 25);
             this.label2.TabIndex = 3;
@@ -84,7 +84,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(54, 135);
+            this.label3.Location = new System.Drawing.Point(54, 145);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(96, 25);
             this.label3.TabIndex = 5;
@@ -92,7 +92,7 @@
             // 
             // txtNote
             // 
-            this.txtNote.Location = new System.Drawing.Point(170, 135);
+            this.txtNote.Location = new System.Drawing.Point(170, 145);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(279, 56);
@@ -100,9 +100,9 @@
             // 
             // btnAddOrderDetail
             // 
-            this.btnAddOrderDetail.Location = new System.Drawing.Point(358, 216);
+            this.btnAddOrderDetail.Location = new System.Drawing.Point(376, 226);
             this.btnAddOrderDetail.Name = "btnAddOrderDetail";
-            this.btnAddOrderDetail.Size = new System.Drawing.Size(91, 33);
+            this.btnAddOrderDetail.Size = new System.Drawing.Size(73, 23);
             this.btnAddOrderDetail.TabIndex = 7;
             this.btnAddOrderDetail.Text = "Add";
             this.btnAddOrderDetail.UseVisualStyleBackColor = true;
@@ -110,16 +110,16 @@
             // 
             // txtQuantity
             // 
-            this.txtQuantity.Location = new System.Drawing.Point(170, 96);
+            this.txtQuantity.Location = new System.Drawing.Point(170, 106);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(63, 23);
             this.txtQuantity.TabIndex = 8;
             // 
             // txtCancel
             // 
-            this.txtCancel.Location = new System.Drawing.Point(247, 216);
+            this.txtCancel.Location = new System.Drawing.Point(288, 226);
             this.txtCancel.Name = "txtCancel";
-            this.txtCancel.Size = new System.Drawing.Size(91, 33);
+            this.txtCancel.Size = new System.Drawing.Size(67, 23);
             this.txtCancel.TabIndex = 9;
             this.txtCancel.Text = "Cancel";
             this.txtCancel.UseVisualStyleBackColor = true;

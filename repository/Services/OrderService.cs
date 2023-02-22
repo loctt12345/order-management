@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Repository.Models;
+using Repository.Repositories;
 
 namespace Repository.Services
 {
@@ -13,28 +14,40 @@ namespace Repository.Services
         public void Update(PrimaryOrder order);
         public void Delete(PrimaryOrder order); 
         public List<PrimaryOrder> GetAll();
+
+        public PrimaryOrder GetById(Guid id);
+
+     
     }
 
     public class OrderService : IOrderService
     {
-        private RepositoryBase<PrimaryOrder> _primaryOrder = new RepositoryBase<PrimaryOrder>();
+        private OrderRepository _orderRepository = new OrderRepository();
 
         public OrderService() { }
         public void Create(PrimaryOrder order)
         {
-            this._primaryOrder.Create(order);
+            this._orderRepository.Create(order);
         }
         public void Update(PrimaryOrder order)
         {
-            this._primaryOrder.Update(order);
+            this._orderRepository.Update(order);
         }
         public void Delete(PrimaryOrder order)
         {
-            this._primaryOrder.Delete(order);
+            this._orderRepository.Delete(order);
         }
         public List<PrimaryOrder> GetAll()
         {
-            return this._primaryOrder.GetAll().ToList();
+            return this._orderRepository.GetAll().ToList();
+        }
+
+     
+
+        public PrimaryOrder GetById(Guid id)
+        {
+            return this._orderRepository.GetAll()
+                .Where(order => order.OrderId.Equals(id)).FirstOrDefault();
         }
     }
 }

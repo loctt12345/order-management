@@ -14,19 +14,25 @@ namespace order_management
     public partial class ProductDetail : Form
     {
         private Product product = null;
-        private DataGridView dgvOrder = null;
+        private DataTable orderDetailsTB = null;
         private PrimaryOrder order = null;
 
-        public ProductDetail(Product product, PrimaryOrder order, DataGridView dgvOrder)
+        public ProductDetail(Product product, PrimaryOrder order, 
+            DataTable orderDetailsTB, OrderDetail previousOrderDetail)
         {
             this.product = product;
-            this.dgvOrder = dgvOrder;
+            this.orderDetailsTB = orderDetailsTB;
             this.order = order;
-
+            
             InitializeComponent();
 
             lbProductName.Text = product.ProductName;
             lbPrice.Text = product.Price.ToString();
+            if (previousOrderDetail != null)
+            {
+                txtQuantity.Value = previousOrderDetail.Quantity;
+                txtNote.Text = previousOrderDetail.Note;
+            }
         }
 
         private void btnAddOrderDetail_Click(object sender, EventArgs e)
@@ -44,18 +50,14 @@ namespace order_management
             };
 
             order.OrderDetails.Add(orderDetail);
-            
+           
 
-            DataTable dt = (DataTable)this.dgvOrder.DataSource;
-            DataRow row = dt.NewRow();
-            row["Product Name"] = this.product.ProductName;
-            row["Quantity"]= orderDetail.Quantity;
-            row["Price"] = this.product.Price;
-            row["Amount"] = orderDetail.Amount;
-            row["Note"] = orderDetail.Note;
-            row["ProductId"] = orderDetail.ProductId;
-            dt.Rows.Add(row);
-            dt.AcceptChanges();
+            this.orderDetailsTB.Rows.Add(this.product.ProductId,
+                                        this.product.ProductName,
+                                        orderDetail.Quantity,
+                                        this.product.Price,
+                                        orderDetail.Amount,
+                                        orderDetail.Note);
 
             this.Close();
             

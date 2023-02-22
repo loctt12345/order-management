@@ -20,16 +20,18 @@ namespace order_management
         private ProductService _productService = new ProductService();
         private OrderService _orderService = new OrderService();
         private PrimaryOrder currentOrder = null;
-        private DataGridView dgvOrder = null;
+        private DataTable orderTable = null;
+        private DataTable dt1 = new DataTable();
+        private OrderDetailService _orderDetailService = new OrderDetailService();
 
-        public AddOrderScreen(PrimaryOrder order, DataGridView dgvOrder)
+        public AddOrderScreen(PrimaryOrder order,  DataTable orderTable)
         {
             
             InitializeComponent();
 
             // set currentOrder
             this.currentOrder = order;
-            this.dgvOrder = dgvOrder;
+            this.orderTable = orderTable;
 
             //Create table with 3 columns
             DataTable dt = new DataTable();
@@ -63,13 +65,24 @@ namespace order_management
             dgvProducts.ReadOnly = false;
 
             // Create order details table
-            DataTable dt1 = new DataTable();
             dt1.Columns.Add(new DataColumn("ProductId", typeof(String)));
             dt1.Columns.Add(new DataColumn("Product Name", typeof(String)));
             dt1.Columns.Add(new DataColumn("Quantity", typeof(int)));
             dt1.Columns.Add(new DataColumn("Price", typeof(double)));
             dt1.Columns.Add(new DataColumn("Amount", typeof(double)));
             dt1.Columns.Add(new DataColumn("Note", typeof(String)));
+
+            foreach (OrderDetail orderDetail in this.currentOrder.OrderDetails)
+            {
+                Product product = _productService.GetById(orderDetail.ProductId);
+                this.dt1.Rows.Add(orderDetail.ProductId,
+                                       product.ProductName,
+                                       orderDetail.Quantity,
+                                       product.Price,
+                                       orderDetail.Amount,
+                                       orderDetail.Note);
+
+            }
 
             DataGridViewButtonColumn btn1 = new DataGridViewButtonColumn();
             btn1.Name = "Select";
@@ -81,7 +94,7 @@ namespace order_management
 
             dgvCurrentOrder.Columns["ProductId"].Visible = false;
             dgvCurrentOrder.AllowUserToAddRows = false;
-            dgvCurrentOrder.ReadOnly = false;
+            dgvCurrentOrder.ReadOnly = true;
         }
 
         private void dgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -99,7 +112,7 @@ namespace order_management
                 Product product = this._productService.GetById(new Guid(productId));
                 
                 // Create new form 
-                ProductDetail form = new ProductDetail(product, this.currentOrder, dgvCurrentOrder);
+                ProductDetail form = new ProductDetail(product, this.currentOrder, dt1, null);
                 form.Show();
             }
         }
@@ -117,38 +130,72 @@ namespace order_management
                 Product product = this._productService.GetById(new Guid(productId));
 
                 // Delete old row
-                dgvCurrentOrder.Rows.RemoveAt(e.RowIndex);
+                this.dt1.Rows.RemoveAt(e.RowIndex);
+                
+                // Get order detail need to remove
+                OrderDetail orderDetailNeedToRemove = this.currentOrder.OrderDetails
+                    .Where(orderDetail => orderDetail.ProductId.ToString().Equals(productId))
+                    .FirstOrDefault();
+
                 //Remove in order details list
-                foreach(OrderDetail orderDetail in this.currentOrder.OrderDetails)
-                {
-                    if (orderDetail.ProductId.ToString().Equals(productId))
-                    {
-                        this.currentOrder.OrderDetails.Remove(orderDetail);
-                        break;
-                    }
-                }
+                this.currentOrder.OrderDetails.Remove(orderDetailNeedToRemove);
 
                 // Create new form 
-                ProductDetail form = new ProductDetail(product, this.currentOrder, dgvCurrentOrder);
+                ProductDetail form = new ProductDetail(product, this.currentOrder, dt1, orderDetailNeedToRemove);
                 form.Show();
             }
         }
 
         private void btnSubmitOrder_Click(object sender, EventArgs e)
         {
-            // Get total
-            double total = 0;
-            foreach (OrderDetail orderDetail in this.currentOrder.OrderDetails)
+            var result = MessageBox.Show("Do you want to submit the order ?", "Confirm" , MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
             {
-                total += orderDetail.Amount;
+                // Get total
+                double total = 0;
+                foreach (OrderDetail orderDetail in this.currentOrder.OrderDetails)
+                {
+                    total += orderDetail.Amount;
+                }
+                this.currentOrder.Total = total;
+
+                if (this.currentOrder.Status == 0)
+                {
+                    this.currentOrder.Status = 1;
+                    this._orderService.Create(currentOrder);
+                    this.orderTable.Rows.Add(currentOrder.OrderId, currentOrder.EmployeeId,
+                    currentOrder.OrderDate, currentOrder.Total, currentOrder.Status);
+                }
+                else
+                {
+                    this.currentOrder.OrderDate = DateTime.Now;
+                    this.orderTable.Rows.Remove(this.orderTable.Select("OrderId='"
+                        + this.currentOrder.OrderId.ToString() + "'")[0]);
+
+                    this.orderTable.Rows.Add(currentOrder.OrderId, currentOrder.EmployeeId,
+                    currentOrder.OrderDate, currentOrder.Total, currentOrder.Status);
+                    this.orderTable.AcceptChanges();
+
+                    this._orderService.Update(this.currentOrder);
+                    this._orderDetailService.DeleteByOrderId(this.currentOrder.OrderId);
+
+                    try
+                    {
+                        foreach (OrderDetail orderDetail1
+                            in this.currentOrder.OrderDetails)
+                        {
+                            orderDetail1.Order = null;
+                            this._orderDetailService.Create(orderDetail1);
+                        }
+                    }
+                    catch(Exception)
+                    {
+
+                    }
+                }
+
+                this.Close();
             }
-            this.currentOrder.Total = total;
-            this.currentOrder.Status = 1;
-            this._orderService.Create(currentOrder);
-
-            this.dgvOrder.DataSource = this._orderService.GetAll();
-
-            this.Close();
         }
     }
 }
