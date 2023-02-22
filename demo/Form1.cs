@@ -12,6 +12,7 @@ namespace demo
     public partial class screen_Winform : Form
     {
         RepositoryBase<Product> productRepo = new RepositoryBase<Product>();
+        ProductService productService = new ProductService();
         public screen_Winform()
         {
             InitializeComponent();
@@ -22,7 +23,10 @@ namespace demo
             try
             {
                 dgvProductList.Visible = true;
-                var products = productRepo.GetAll().ToList();
+               
+                var products = productRepo.GetAll()
+                    .Where(p=> p.Status == true)
+                    .ToList();
                 dgvProductList.DataSource = products;
                 dgvProductList.Columns[4].Visible= false;
             } catch(Exception ex)
@@ -117,23 +121,18 @@ namespace demo
                 if (dgvProductList.CurrentRow != null)
                 {
                     DataGridViewRow dgvRow = dgvProductList.CurrentRow;
-                    Product product = new Product()
-                    {
-                        ProductId = new Guid(dgvRow.Cells[0].Value.ToString()),
-                        ProductName = dgvRow.Cells[1].Value.ToString(),
-                        Price = Convert.ToDouble(dgvRow.Cells[2].Value),
-                        Status = Convert.ToBoolean(dgvRow.Cells[3].Value)
-                    };
-                    MessageBox.Show(product.Status.ToString());
-                    product.Status = false;
-                    productRepo.Update(product);
+                    Guid ProductId = new Guid(dgvRow.Cells[0].Value.ToString());
+                    List<Product> product = productService.GetAll().Where(x => x.ProductId == ProductId).ToList();
+                    product[0].Status = false;
+                    productService.Update(product[0]);
                 }
-                
+
                 // Refresh the DataGridView to show the updated list of products
-                dgvProductList.DataSource = updatedProducts;
-            } catch(Exception ex)
+                dgvProductList.DataSource = productService.GetAll();
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show("Cannot Delete");
+                MessageBox.Show(ex.Message);
                 Console.WriteLine(ex.Message);
             }
         }
