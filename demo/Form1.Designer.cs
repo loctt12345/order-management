@@ -203,10 +203,10 @@
             this.checkedNo.AutoSize = true;
             this.checkedNo.Location = new System.Drawing.Point(0, 55);
             this.checkedNo.Name = "checkedNo";
-            this.checkedNo.Size = new System.Drawing.Size(91, 24);
+            this.checkedNo.Size = new System.Drawing.Size(129, 24);
             this.checkedNo.TabIndex = 1;
             this.checkedNo.TabStop = true;
-            this.checkedNo.Text = "Hết hàng";
+            this.checkedNo.Text = "Out Of Product";
             this.checkedNo.UseVisualStyleBackColor = true;
             // 
             // checkedYes
@@ -214,10 +214,10 @@
             this.checkedYes.AutoSize = true;
             this.checkedYes.Location = new System.Drawing.Point(0, 0);
             this.checkedYes.Name = "checkedYes";
-            this.checkedYes.Size = new System.Drawing.Size(93, 24);
+            this.checkedYes.Size = new System.Drawing.Size(115, 24);
             this.checkedYes.TabIndex = 0;
             this.checkedYes.TabStop = true;
-            this.checkedYes.Text = "Còn hàng";
+            this.checkedYes.Text = "New Product";
             this.checkedYes.UseVisualStyleBackColor = true;
             // 
             // label3
@@ -262,7 +262,7 @@
             this.Controls.Add(this.txtProductId);
             this.Controls.Add(this.dgvProductList);
             this.Name = "screen_Winform";
-            this.Text = "Form1";
+            this.Text = "Product Management";
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductList)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
