@@ -47,7 +47,7 @@ namespace order_management
             column.DataType = System.Type.GetType("System.Double");
             column.ColumnName = "Amount";
             dt.Columns.Add(column);
-            primaryOrderService.GetAll().DistinctBy(x => x.OrderDate).Where(x => x.OrderDate >= From).Where(x => x.OrderDate <= To).Where(x => x.Status == 3).ToList().ForEach(x =>
+            primaryOrderService.GetAll().Where(x => (x.OrderDate >= From && x.OrderDate <= To && x.Status == 3)).ToList().ForEach(x =>
             {
                 row = dt.NewRow();
                 row["Day"] = x.OrderDate;
