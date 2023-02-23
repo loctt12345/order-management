@@ -28,83 +28,114 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnDemo = new System.Windows.Forms.Button();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.SuspendLayout();
+            btnShowReport = new Button();
+            dateTimePicker1 = new DateTimePicker();
+            dateTimePicker2 = new DateTimePicker();
+            dgvReport = new DataGridView();
+            ProfitReportLabel = new Label();
+            label1 = new Label();
+            panel1 = new Panel();
+            ((System.ComponentModel.ISupportInitialize)dgvReport).BeginInit();
+            panel1.SuspendLayout();
+            SuspendLayout();
             // 
-            // btnDemo
+            // btnShowReport
             // 
-            this.btnDemo.Location = new System.Drawing.Point(219, 41);
-            this.btnDemo.Name = "btnDemo";
-            this.btnDemo.Size = new System.Drawing.Size(94, 29);
-            this.btnDemo.TabIndex = 0;
-            this.btnDemo.Text = "Show Demo";
-            this.btnDemo.UseVisualStyleBackColor = true;
-            this.btnDemo.Click += new System.EventHandler(this.btnDemo_Click);
-            // 
-            // reportViewer1
-            // 
-            this.reportViewer1.Location = new System.Drawing.Point(350, 80);
-            this.reportViewer1.Name = "ReportViewer";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(1000, 600);
-            this.reportViewer1.TabIndex = 0;
+            btnShowReport.Location = new Point(665, 91);
+            btnShowReport.Name = "btnShowReport";
+            btnShowReport.Size = new Size(94, 29);
+            btnShowReport.TabIndex = 0;
+            btnShowReport.Text = "Show";
+            btnShowReport.UseVisualStyleBackColor = true;
+            btnShowReport.Click += btnShowReport_Click;
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.CustomFormat = "dd/MM/yyyy";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(348, 43);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(130, 27);
-            this.dateTimePicker1.TabIndex = 1;
+            dateTimePicker1.CustomFormat = "dd/MM/yyyy";
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.Location = new Point(359, 93);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(130, 27);
+            dateTimePicker1.TabIndex = 1;
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.CustomFormat = "dd/MM/yyyy";
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(502, 43);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(130, 27);
-            this.dateTimePicker2.TabIndex = 2;
+            dateTimePicker2.CustomFormat = "dd/MM/yyyy";
+            dateTimePicker2.Format = DateTimePickerFormat.Custom;
+            dateTimePicker2.Location = new Point(513, 93);
+            dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.Size = new Size(130, 27);
+            dateTimePicker2.TabIndex = 2;
             // 
-            // dataGridView1
+            // dgvReport
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(38, 86);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(275, 593);
-            this.dataGridView1.TabIndex = 3;
+            dgvReport.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvReport.Location = new Point(39, 137);
+            dgvReport.Name = "dgvReport";
+            dgvReport.RowHeadersWidth = 51;
+            dgvReport.RowTemplate.Height = 29;
+            dgvReport.Size = new Size(275, 593);
+            dgvReport.TabIndex = 3;
+            // 
+            // ProfitReportLabel
+            // 
+            ProfitReportLabel.AutoSize = true;
+            ProfitReportLabel.Font = new Font("Arial", 25F, FontStyle.Bold, GraphicsUnit.Point);
+            ProfitReportLabel.ForeColor = SystemColors.Control;
+            ProfitReportLabel.Location = new Point(25, 8);
+            ProfitReportLabel.Name = "ProfitReportLabel";
+            ProfitReportLabel.Size = new Size(547, 49);
+            ProfitReportLabel.TabIndex = 4;
+            ProfitReportLabel.Text = "Profit Report Management";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
+            label1.ForeColor = Color.SteelBlue;
+            label1.Location = new Point(57, 95);
+            label1.Name = "label1";
+            label1.Size = new Size(273, 23);
+            label1.TabIndex = 5;
+            label1.Text = "Select a range to show report: ";
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.SteelBlue;
+            panel1.Controls.Add(ProfitReportLabel);
+            panel1.Location = new Point(1, 1);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1388, 59);
+            panel1.TabIndex = 6;
             // 
             // ProfitReport
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1383, 811);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.reportViewer1);
-            this.Controls.Add(this.btnDemo);
-            this.Name = "ProfitReport";
-            this.Text = "ProfitReport";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1383, 811);
+            Controls.Add(panel1);
+            Controls.Add(label1);
+            Controls.Add(dgvReport);
+            Controls.Add(dateTimePicker2);
+            Controls.Add(dateTimePicker1);
+            Controls.Add(btnShowReport);
+            Name = "ProfitReport";
+            Text = "ProfitReport";
+            ((System.ComponentModel.ISupportInitialize)dgvReport).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private Button btnDemo;
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private Button btnShowReport;
         private DateTimePicker dateTimePicker1;
         private DateTimePicker dateTimePicker2;
-        private DataGridView dataGridView1;
+        private DataGridView dgvReport;
+        private Label ProfitReportLabel;
+        private Label label1;
+        private Panel panel1;
     }
 }
