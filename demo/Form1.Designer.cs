@@ -43,11 +43,11 @@
             this.labelProdName = new System.Windows.Forms.Label();
             this.labelProdPrice = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkedNo = new System.Windows.Forms.RadioButton();
             this.checkedYes = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductList)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -61,7 +61,6 @@
             this.dgvProductList.RowTemplate.Height = 29;
             this.dgvProductList.Size = new System.Drawing.Size(698, 366);
             this.dgvProductList.TabIndex = 0;
-            this.dgvProductList.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductList_CellValueChanged);
             // 
             // txtProductId
             // 
@@ -136,9 +135,9 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(678, 76);
+            this.txtSearch.Location = new System.Drawing.Point(743, 76);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(264, 27);
+            this.txtSearch.Size = new System.Drawing.Size(256, 27);
             this.txtSearch.TabIndex = 9;
             // 
             // label1
@@ -180,22 +179,13 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(962, 74);
+            this.btnSearch.Location = new System.Drawing.Point(1022, 74);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(156, 29);
+            this.btnSearch.Size = new System.Drawing.Size(114, 29);
             this.btnSearch.TabIndex = 14;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(557, 79);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(115, 20);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "Enter ProductId ";
             // 
             // groupBox1
             // 
@@ -239,14 +229,23 @@
             this.label3.TabIndex = 17;
             this.label3.Text = "Status";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(557, 83);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(180, 20);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Enter Product Information";
+            // 
             // screen_Winform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1148, 651);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.labelProdPrice);
             this.Controls.Add(this.labelProdName);
@@ -289,10 +288,10 @@
         private Label labelProdName;
         private Label labelProdPrice;
         private Button btnSearch;
-        private Label label2;
         private GroupBox groupBox1;
         private RadioButton checkedNo;
         private RadioButton checkedYes;
         private Label label3;
+        private Label label2;
     }
 }

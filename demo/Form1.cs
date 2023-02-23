@@ -53,8 +53,9 @@ namespace demo
                 }
 
                 productRepo.Create(product);
-                MessageBox.Show("Added Sucessful, Please click show all to refresh");
-                
+                MessageBox.Show("Added Sucessful"); 
+                btnShowAll.PerformClick();
+
             }
             catch(Exception ex) {
                 MessageBox.Show("Cannot Add New Product");
@@ -128,7 +129,9 @@ namespace demo
                 }
 
                 // Refresh the DataGridView to show the updated list of products
-                dgvProductList.DataSource = productService.GetAll();
+                dgvProductList.DataSource = productService.GetAll()
+                    .Where(p=> p.Status == true);
+                btnShowAll.PerformClick();
             }
             catch (Exception ex)
             {
@@ -141,16 +144,19 @@ namespace demo
         {
             try
             {
+                dgvProductList.Columns[4].Visible = false;
                 string keyword = txtSearch.Text;              
                 var productService = new ProductService();
                 var product = productService.Search(keyword);
                 dgvProductList.DataSource = product;
                 MessageBox.Show("Search Sucessful");
+                
             } catch(Exception ex )
             {
                 MessageBox.Show("Maybe do not have product you need");
                 Console.WriteLine(ex.Message);
             }
         }
+
     }
 }

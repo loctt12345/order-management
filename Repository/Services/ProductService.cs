@@ -48,6 +48,8 @@ namespace Repository.Services
                 .Where(p => isGuid && p.ProductId.Equals(productId)
                             || !isGuid && (p.ProductName.Contains(keyword)
                                            || p.Price.ToString().Contains(keyword)))
+                                              
+                .Where (p=>p.Status == true)
                 .ToList();
         }
 
