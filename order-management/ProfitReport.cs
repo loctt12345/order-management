@@ -31,7 +31,7 @@ namespace order_management
             ReportDataSource ds = new ReportDataSource("ProfitReportView", dt);
             reportViewer1.LocalReport.DataSources.Add(ds);
             //path
-            reportViewer1.LocalReport.ReportPath = "C:\\Disk D\\Desktop\\MAJOR\\SEMESTER_5\\PRN211\\order-management\\order-management\\ProfitReportView.rdlc";
+            reportViewer1.LocalReport.ReportPath = "data//ProfitReportView.rdlc";
             //Refresh
             reportViewer1.RefreshReport();
         }
