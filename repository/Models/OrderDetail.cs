@@ -15,6 +15,8 @@ namespace Repository.Models
         public string Note { get; set; }
         public DateTime OrderDate { get; set; }
 
+        public bool Status { get; set; }
+
         public virtual PrimaryOrder Order { get; set; }
         public virtual Product Product { get; set; }
     }
