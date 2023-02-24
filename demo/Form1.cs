@@ -32,7 +32,6 @@ namespace demo
             } catch(Exception ex)
             {
                 MessageBox.Show("Cannot show all data right now");
-                Console.WriteLine(ex.Message);
             }
         }
 
@@ -59,7 +58,6 @@ namespace demo
             }
             catch(Exception ex) {
                 MessageBox.Show("Cannot Add New Product");
-                Console.WriteLine(ex.Message);
             }
             
         }
@@ -77,7 +75,6 @@ namespace demo
             catch (Exception ex)
             {
                 MessageBox.Show("Cannot Exit Now, try again");
-                Console.WriteLine(ex.Message);
             }
         }
 
@@ -106,12 +103,12 @@ namespace demo
                 foreach(Product product in updatedProducts)
                 {
                     productRepo.Update(product);
-                }         
+                }
+                MessageBox.Show("Update sucessful");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Update sucessful");
-                Console.WriteLine(ex.Message);
+                MessageBox.Show("Cannot update right now, try again");
             }
         }
 
@@ -128,15 +125,17 @@ namespace demo
                     productService.Update(product[0]);
                 }
 
+                DialogResult dg = MessageBox.Show("Are you sure delete this product ?", "Notice", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
                 // Refresh the DataGridView to show the updated list of products
                 dgvProductList.DataSource = productService.GetAll()
                     .Where(p=> p.Status == true);
+                MessageBox.Show("Delete Sucessful");
                 btnShowAll.PerformClick();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                Console.WriteLine(ex.Message);
             }
         }
 
@@ -154,7 +153,6 @@ namespace demo
             } catch(Exception ex )
             {
                 MessageBox.Show("Maybe do not have product you need");
-                Console.WriteLine(ex.Message);
             }
         }
 
