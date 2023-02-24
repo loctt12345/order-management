@@ -108,7 +108,11 @@ namespace demo
             }
             catch (Exception ex)
             {
+
                 MessageBox.Show("Cannot update right now, try again");
+
+
+
             }
         }
 
