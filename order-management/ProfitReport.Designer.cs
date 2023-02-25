@@ -69,13 +69,17 @@
             // 
             // dgvReport
             // 
+            dgvReport.AllowUserToAddRows = false;
+            dgvReport.AllowUserToDeleteRows = false;
             dgvReport.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvReport.Location = new Point(39, 137);
             dgvReport.Name = "dgvReport";
+            dgvReport.ReadOnly = true;
             dgvReport.RowHeadersWidth = 51;
             dgvReport.RowTemplate.Height = 29;
-            dgvReport.Size = new Size(275, 593);
+            dgvReport.Size = new Size(268, 715);
             dgvReport.TabIndex = 3;
+            dgvReport.CellClick += dgvReport_CellClick;
             // 
             // ProfitReportLabel
             // 
@@ -105,14 +109,14 @@
             panel1.Controls.Add(ProfitReportLabel);
             panel1.Location = new Point(1, 1);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1388, 59);
+            panel1.Size = new Size(1434, 59);
             panel1.TabIndex = 6;
             // 
             // ProfitReport
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1383, 811);
+            ClientSize = new Size(1435, 886);
             Controls.Add(panel1);
             Controls.Add(label1);
             Controls.Add(dgvReport);
