@@ -55,11 +55,11 @@
             // dgvProductList
             // 
             this.dgvProductList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProductList.Location = new System.Drawing.Point(39, 249);
+            this.dgvProductList.Location = new System.Drawing.Point(58, 249);
             this.dgvProductList.Name = "dgvProductList";
             this.dgvProductList.RowHeadersWidth = 51;
             this.dgvProductList.RowTemplate.Height = 29;
-            this.dgvProductList.Size = new System.Drawing.Size(698, 366);
+            this.dgvProductList.Size = new System.Drawing.Size(618, 366);
             this.dgvProductList.TabIndex = 0;
             // 
             // txtProductId

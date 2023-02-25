@@ -12,6 +12,7 @@ namespace Repository.Services
         public void Create(Product product);
         public void Update(Product product);
         public void Delete(Product product);
+
         public List<Product> GetAll();
 
     }

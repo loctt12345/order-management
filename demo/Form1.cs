@@ -23,7 +23,8 @@ namespace demo
             try
             {
                 dgvProductList.Visible = true;
-               
+                //dgvProductList.Columns[3].Visible = false;
+                //dgvProductList.ScrollBars = ScrollBars.None;
                 var products = productRepo.GetAll()
                     .Where(p=> p.Status == true)
                     .ToList();
@@ -38,6 +39,9 @@ namespace demo
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
             try {
+                //dgvProductList.Columns[3].Visible = false;
+                
+
                 var product = new Product();
                 product.ProductId = Guid.NewGuid();
                 product.ProductName = txtProductName.Text;
@@ -100,19 +104,23 @@ namespace demo
         {
             try
             {
-                foreach(Product product in updatedProducts)
+                if (dgvProductList.Rows.Count == 0)
                 {
-                    productRepo.Update(product);
+                    MessageBox.Show("There are no product to update");
                 }
-                MessageBox.Show("Update sucessful");
+                else
+                {
+                    //dgvProductList.Columns[3].Visible = false;
+                    foreach (Product product in updatedProducts)
+                    {
+                        productRepo.Update(product);
+                    }
+                    MessageBox.Show("Update sucessful");
+                }
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show("Cannot update right now, try again");
-
-
-
             }
         }
 
@@ -120,27 +128,36 @@ namespace demo
         {
             try
             {
-                if (dgvProductList.CurrentRow != null)
+                //dgvProductList.Columns[3].Visible = false;
+                if (dgvProductList.Rows.Count == 0)
+                {
+                    MessageBox.Show("There are no products to delete");
+                }
+                else if (dgvProductList.CurrentRow != null)
                 {
                     DataGridViewRow dgvRow = dgvProductList.CurrentRow;
                     Guid ProductId = new Guid(dgvRow.Cells[0].Value.ToString());
                     List<Product> product = productService.GetAll().Where(x => x.ProductId == ProductId).ToList();
                     product[0].Status = false;
+                    DialogResult dg = MessageBox.Show("Are you sure delete this product ?", "Notice", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (dg == DialogResult.OK)
+                    {
+                        // Refresh the DataGridView to show the updated list of products
+                        dgvProductList.DataSource = productService.GetAll()
+                            .Where(p => p.Status == true);
+                        MessageBox.Show("Delete Sucessful");
+                        btnShowAll.PerformClick();
+                    }
+                    if (dg == DialogResult.Cancel)
+                    {
+                        MessageBox.Show("There are no products to delete");
+                    }
                     productService.Update(product[0]);
                 }
-
-                DialogResult dg = MessageBox.Show("Are you sure delete this product ?", "Notice", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-
-                // Refresh the DataGridView to show the updated list of products
-                dgvProductList.DataSource = productService.GetAll()
-                    .Where(p=> p.Status == true);
-                MessageBox.Show("Delete Sucessful");
-                btnShowAll.PerformClick();
-            }
-            catch (Exception ex)
+            }   catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
-            }
+                MessageBox.Show("Cannot Delete, check again product");
+            }    
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -148,6 +165,7 @@ namespace demo
             try
             {
                 dgvProductList.Columns[4].Visible = false;
+                //dgvProductList.Columns[3].Visible = false;
                 string keyword = txtSearch.Text;              
                 var productService = new ProductService();
                 var product = productService.Search(keyword);
