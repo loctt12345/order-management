@@ -30,7 +30,7 @@ namespace order_management
             InitChart(dt);
             ModifyChartTitle(DateTime.Today.AddYears(-1), DateTime.Today);
             MapDataToChart(dt);
-
+            dgvReport.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void btnShowReport_Click(object sender, EventArgs e)
@@ -43,6 +43,8 @@ namespace order_management
             {
                 dgvReport.Hide();
                 resultChart.Hide();
+                labelNote1.Hide();
+                labelNote2.Hide();
                 MessageBox.Show("Cannot display a chart with a range over 1 year");
                 return;
             }
@@ -67,6 +69,8 @@ namespace order_management
             {
                 dgvReport.Hide();
                 resultChart.Hide();
+                labelNote1.Hide();
+                labelNote2.Hide();
                 MessageBox.Show("No data found.");
                 return;
             }
@@ -74,17 +78,20 @@ namespace order_management
         }
         private void InitChart(DataTable dt)
         {
-            if (this.Controls.Contains(resultChart))
+            if (this.Controls.Contains(resultChart) || screenLayout.Controls.Contains(resultChart))
             {
                 this.Controls.Remove(resultChart);
+                screenLayout.Controls.Remove(resultChart);
             }
             resultChart = new Chart();
             this.Controls.Add(resultChart);
+            screenLayout.Controls.Add(resultChart, 3, 2);
+            resultChart.Dock = DockStyle.Fill;
             resultChart.Titles.Add("");
             resultChart.Titles[0].Font = new Font("Arial", 18, FontStyle.Bold);
             resultChart.Titles[0].ForeColor = Color.SteelBlue;
-            resultChart.Size = new Size(1030, 715);
-            resultChart.Location = new Point(359, 137);
+            //resultChart.Size = new Size(1030, 715);
+            //resultChart.Location = new Point(359, 137);
             resultChart.Legends.Add("Legend1");
             resultChart.ChartAreas.Add("ChartArea1");
             Series seriesTotal = new Series("Total");
@@ -103,6 +110,13 @@ namespace order_management
             resultChart.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Black;
             resultChart.Click += new EventHandler(resultChart_Click);
             dgvReport.Show();
+            labelNote2.Show();
+            labelNote1.Show();
+            if (dt.Columns[0].ColumnName.Equals("Day"))
+            {
+                labelNote1.Hide();
+                labelNote2.Hide();
+            }
         }
         private void resultChart_Click(object sender, EventArgs e)
         {
