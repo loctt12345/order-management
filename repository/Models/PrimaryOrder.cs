@@ -15,6 +15,7 @@ namespace Repository.Models
         public Guid OrderId { get; set; }
         public Guid EmployeeId { get; set; }
         public DateTime OrderDate { get; set; }
+        public string Note { get; set; }
         public double Total { get; set; }
         public int Status { get; set; }
 

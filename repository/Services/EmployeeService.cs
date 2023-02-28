@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Repository.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Repository.Models;
 
 namespace Repository.Services
 {
@@ -13,25 +13,36 @@ namespace Repository.Services
         public void Update(Employee employee);
         public void Delete(Employee employee);
         public List<Employee> GetAll();
-        public Employee GetById(String id);
-
     }
-
     public class EmployeeService : IEmployeeService
     {
-        private RepositoryBase<Employee> _employeeRepo = new RepositoryBase<Employee>();
-        public void Create(Employee employee) { }
-        public void Update(Employee employee) { }
-        public void Delete(Employee employee) { }
+        private readonly RepositoryBase<Employee> _emloyeeService = new RepositoryBase<Employee>();
+        public EmployeeService() { }
+
+        public EmployeeService(RepositoryBase<Employee> emloyeeService)
+        {
+            _emloyeeService = emloyeeService;
+        }
+
+        public void Create(Employee employee)
+        {
+            _emloyeeService.Create(employee);
+        }
+
+        public void Delete(Employee employee)
+        {
+            _emloyeeService.Delete(employee);
+        }
 
         public List<Employee> GetAll()
         {
-            return this._employeeRepo.GetAll().ToList();
+            return _emloyeeService.GetAll().ToList();
         }
 
-        public Employee GetById(String id)
+        public void Update(Employee employee)
         {
-            return this._employeeRepo.GetAll().Where(e => e.EmployeeId.Equals(id)).FirstOrDefault();
+            _emloyeeService.Update(employee);
         }
     }
+
 }
