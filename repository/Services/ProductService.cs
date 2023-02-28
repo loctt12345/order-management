@@ -14,6 +14,8 @@ namespace Repository.Services
         public void Delete(Product product);
         public List<Product> GetAll();
         public Product GetById(Guid id);
+
+        public List<Product> Search(string keyword);
     }
 
     public class ProductService : IProductService
@@ -46,6 +48,19 @@ namespace Repository.Services
         {
             return this._productRepo.GetAll()
                 .Where(product => product.ProductId.Equals(id)).FirstOrDefault();
+        }
+        public List<Product> Search(string keyword)
+        {
+            Guid productId;
+            bool isGuid = Guid.TryParse(keyword, out productId);
+
+            return _productRepo.GetAll()
+                .Where(p => isGuid && p.ProductId.Equals(productId)
+                            || !isGuid && (p.ProductName.Contains(keyword)
+                                           || p.Price.ToString().Contains(keyword)))
+
+                .Where(p => p.Status == true)
+                .ToList();
         }
     }
 

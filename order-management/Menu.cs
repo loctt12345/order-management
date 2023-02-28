@@ -34,5 +34,11 @@ namespace order_management
             ProfitReport form = new ProfitReport();
             form.Show();
         }
+
+        private void btnProductManagment_Click(object sender, EventArgs e)
+        {
+            ProductManagement form = new ProductManagement();
+            form.Show();
+        }
     }
 }

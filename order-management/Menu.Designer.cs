@@ -62,6 +62,7 @@
             btnProductManagment.TabIndex = 2;
             btnProductManagment.Text = "Quản lí sản phẩm";
             btnProductManagment.UseVisualStyleBackColor = true;
+            btnProductManagment.Click += btnProductManagment_Click;
             // 
             // btnProfit
             // 
