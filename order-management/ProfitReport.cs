@@ -16,7 +16,7 @@ namespace order_management
 {
     public partial class ProfitReport : Form
     {
-        private PrimaryOrderService primaryOrderService = new PrimaryOrderService();
+        private OrderService primaryOrderService = new OrderService();
         public ProfitReport()
         {
             InitializeComponent();

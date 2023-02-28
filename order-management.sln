@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "order-management", "order-management\order-management.csproj", "{E3C2201A-AC69-4D6E-BB9C-7CF0253E36A3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "repository\Repository.csproj", "{744A61DA-D3AF-4C39-ACEF-AD8511B6ABD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{744A61DA-D3AF-4C39-ACEF-AD8511B6ABD2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

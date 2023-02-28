@@ -9,8 +9,8 @@ namespace Repository
 {
     public class RepositoryBase<T> where T : class
     {
-        private readonly Models.CoffeeShopManagementContext _context;
-        private readonly DbSet<T> _dbSet;
+        internal readonly Models.CoffeeShopManagementContext _context;
+        internal readonly DbSet<T> _dbSet;
         public RepositoryBase()
         {
             _context= new Models.CoffeeShopManagementContext();
