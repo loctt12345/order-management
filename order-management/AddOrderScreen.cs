@@ -24,9 +24,9 @@ namespace order_management
         private DataTable dt1 = new DataTable();
         private OrderDetailService _orderDetailService = new OrderDetailService();
 
-        public AddOrderScreen(PrimaryOrder order,  DataTable orderTable)
+        public AddOrderScreen(PrimaryOrder order, DataTable orderTable)
         {
-            
+
             InitializeComponent();
 
             // set currentOrder
@@ -38,7 +38,7 @@ namespace order_management
             dt.Columns.Add(new DataColumn("ProductId", typeof(String)));
             dt.Columns.Add(new DataColumn("Product Name", typeof(String)));
             dt.Columns.Add(new DataColumn("Price", typeof(double)));
-            
+
             //Get from DB 
             List<Product> ProductDB = this._productService.GetAll();
 
@@ -100,17 +100,17 @@ namespace order_management
         private void dgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var senderGrid = (DataGridView)sender;
-            
+
             //Check if user click button "select"
             if (e.ColumnIndex >= 0 &&
                 senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
             {
                 // Get hidden productId string
                 String productId = senderGrid.Rows[e.RowIndex].Cells["ProductId"].Value.ToString();
-                
+
                 // Get product from DB by Id String
                 Product product = this._productService.GetById(new Guid(productId));
-                
+
                 // Create new form 
                 ProductDetail form = new ProductDetail(product, this.currentOrder, dt1, null);
                 form.Show();
@@ -131,7 +131,7 @@ namespace order_management
 
                 // Delete old row
                 this.dt1.Rows.RemoveAt(e.RowIndex);
-                
+
                 // Get order detail need to remove
                 OrderDetail orderDetailNeedToRemove = this.currentOrder.OrderDetails
                     .Where(orderDetail => orderDetail.ProductId.ToString().Equals(productId))
@@ -148,7 +148,7 @@ namespace order_management
 
         private void btnSubmitOrder_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("Do you want to submit the order ?", "Confirm" , MessageBoxButtons.YesNo);
+            var result = MessageBox.Show("Do you want to submit the order ?", "Confirm", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
                 // Get total
@@ -161,7 +161,7 @@ namespace order_management
 
                 if (this.currentOrder.Status == 0)
                 {
-                    this.currentOrder.Status = 1;
+                    this.currentOrder.Status = 2;
                     this._orderService.Create(currentOrder);
                     this.orderTable.Rows.Add(currentOrder.OrderId, currentOrder.EmployeeId,
                     currentOrder.OrderDate, currentOrder.Total, currentOrder.Status);
@@ -175,6 +175,7 @@ namespace order_management
                     this.orderTable.Rows.Add(currentOrder.OrderId, currentOrder.EmployeeId,
                     currentOrder.OrderDate, currentOrder.Total, currentOrder.Status);
                     this.orderTable.AcceptChanges();
+                    this.currentOrder.Status = 2;
 
                     this._orderService.Update(this.currentOrder);
                     this._orderDetailService.DeleteByOrderId(this.currentOrder.OrderId);
@@ -188,7 +189,7 @@ namespace order_management
                             this._orderDetailService.Create(orderDetail1);
                         }
                     }
-                    catch(Exception)
+                    catch (Exception)
                     {
 
                     }
@@ -196,6 +197,22 @@ namespace order_management
 
                 this.Close();
             }
+        }
+
+        private void btnPay_Click(object sender, EventArgs e)
+        {
+            if (this.currentOrder.Status == 2)
+            {
+                this.currentOrder.Status = 3;
+                this.orderTable.Rows.Remove(this.orderTable.Select("OrderId='"
+                           + this.currentOrder.OrderId.ToString() + "'")[0]);
+                this.orderTable.Rows.Add(currentOrder.OrderId, currentOrder.EmployeeId,
+                    currentOrder.OrderDate, currentOrder.Total, currentOrder.Status);
+                this.orderTable.AcceptChanges();
+                this._orderService.Update(this.currentOrder);
+            }
+            
+            this.Close();
         }
     }
 }
