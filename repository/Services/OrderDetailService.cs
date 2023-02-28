@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Repository.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Repository.Models;
 
 namespace Repository.Services
 {
@@ -16,7 +16,9 @@ namespace Repository.Services
 
         public void DeleteByOrderId(Guid orderId);
 
-        public List<OrderDetail> GetByOrderId(Guid orderId);    
+        public OrderDetail GetById(Guid id);
+
+        public List<OrderDetail> GetByOrderId(Guid orderId);
 
     }
 
@@ -24,17 +26,17 @@ namespace Repository.Services
     {
         private RepositoryBase<OrderDetail> _orderDetailRepo = new RepositoryBase<OrderDetail>();
 
-        public OrderDetailService() { } 
+        public OrderDetailService() { }
 
-        public void Create(OrderDetail orderDetail) 
+        public void Create(OrderDetail orderDetail)
         {
             _orderDetailRepo.Create(orderDetail);
         }
-        public void Update(OrderDetail orderDetail) 
-        { 
-            _orderDetailRepo.Update(orderDetail);  
+        public void Update(OrderDetail orderDetail)
+        {
+            _orderDetailRepo.Update(orderDetail);
         }
-        public void Delete(OrderDetail orderDetail) 
+        public void Delete(OrderDetail orderDetail)
         {
             _orderDetailRepo.Delete(orderDetail);
         }
@@ -56,6 +58,11 @@ namespace Repository.Services
         public List<OrderDetail> GetByOrderId(Guid orderId)
         {
             return _orderDetailRepo.GetAll().Where(orderDetail => orderDetail.OrderId.Equals(orderId)).ToList();
+        }
+
+        public OrderDetail GetById(Guid id)
+        {
+            return GetAll().Where(orderDetail => orderDetail.OrderDetailsId.Equals(id)).FirstOrDefault();
         }
     }
 }

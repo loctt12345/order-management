@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Repository.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Repository.Models;
 
 namespace Repository.Services
 {
@@ -41,11 +41,12 @@ namespace Repository.Services
         {
             return this._productRepo.GetAll().ToList();
         }
-        
+
         public Product GetById(Guid id)
         {
             return this._productRepo.GetAll()
                 .Where(product => product.ProductId.Equals(id)).FirstOrDefault();
         }
     }
+
 }
