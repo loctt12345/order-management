@@ -157,6 +157,7 @@ namespace order_management
                         MessageBox.Show("There are no products to delete");
                     }
                     productService.Update(product[0]);
+                    btnShowAll_Click(sender, e);
                 }
             }
             catch (Exception ex)

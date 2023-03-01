@@ -1,5 +1,0 @@
-{
-    "ConnectionStrings": {
-        "CoffeeShopManagement": "server=LAPTOP-ICC8IBUN;Initial Catalog=CoffeeShopManagement;Integrated Security=True;TrustServerCertificate=True"
-    }
-}

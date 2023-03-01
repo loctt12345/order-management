@@ -23,7 +23,7 @@ namespace order_management
             dgvShowData.Columns[1].Width = 100;
             dgvShowData.Columns[2].Width = 100;
             dgvShowData.Columns[3].Width = 100;
-            dgvShowData.Columns[4].Width = 358;
+            dgvShowData.Columns[4].Width = 500;
         }
 
         protected List<OrderDetail> getHaventDoneList()
@@ -34,7 +34,7 @@ namespace order_management
 
 
         //Create a New Entity - dont have in database, Which can Show Product Name
-        protected List<ChefDetails> getChefDetails() 
+        protected List<ChefDetails> getChefDetails()
         {
             var listOrderDetails = getHaventDoneList();
             var listChefDetails = new List<ChefDetails>();
@@ -52,7 +52,7 @@ namespace order_management
 
             return listChefDetails;
         }
-       
+
 
         protected void updateStatus(Guid id)
         {

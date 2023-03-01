@@ -28,55 +28,58 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnConfirm = new System.Windows.Forms.Button();
-            this.dgvShowData = new System.Windows.Forms.DataGridView();
-            this.btnRefresh = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvShowData)).BeginInit();
-            this.SuspendLayout();
+            btnConfirm = new Button();
+            dgvShowData = new DataGridView();
+            btnRefresh = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvShowData).BeginInit();
+            SuspendLayout();
             // 
             // btnConfirm
             // 
-            this.btnConfirm.Location = new System.Drawing.Point(579, 405);
-            this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(214, 55);
-            this.btnConfirm.TabIndex = 3;
-            this.btnConfirm.Text = "Confirm";
-            this.btnConfirm.UseVisualStyleBackColor = true;
-            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            btnConfirm.Location = new Point(662, 540);
+            btnConfirm.Margin = new Padding(3, 4, 3, 4);
+            btnConfirm.Name = "btnConfirm";
+            btnConfirm.Size = new Size(245, 73);
+            btnConfirm.TabIndex = 3;
+            btnConfirm.Text = "Confirm";
+            btnConfirm.UseVisualStyleBackColor = true;
+            btnConfirm.Click += btnConfirm_Click;
             // 
             // dgvShowData
             // 
-            this.dgvShowData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvShowData.Location = new System.Drawing.Point(42, 81);
-            this.dgvShowData.Name = "dgvShowData";
-            this.dgvShowData.RowTemplate.Height = 25;
-            this.dgvShowData.Size = new System.Drawing.Size(751, 304);
-            this.dgvShowData.TabIndex = 2;
+            dgvShowData.BorderStyle = BorderStyle.None;
+            dgvShowData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvShowData.Location = new Point(48, 108);
+            dgvShowData.Margin = new Padding(3, 4, 3, 4);
+            dgvShowData.Name = "dgvShowData";
+            dgvShowData.RowHeadersWidth = 51;
+            dgvShowData.RowTemplate.Height = 25;
+            dgvShowData.Size = new Size(858, 405);
+            dgvShowData.TabIndex = 2;
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(42, 29);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(108, 46);
-            this.btnRefresh.TabIndex = 4;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            btnRefresh.Location = new Point(48, 39);
+            btnRefresh.Margin = new Padding(3, 4, 3, 4);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(123, 61);
+            btnRefresh.TabIndex = 4;
+            btnRefresh.Text = "Refresh";
+            btnRefresh.UseVisualStyleBackColor = true;
+            btnRefresh.Click += btnRefresh_Click;
             // 
             // Chef_Display
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(837, 472);
-            this.Controls.Add(this.btnRefresh);
-            this.Controls.Add(this.btnConfirm);
-            this.Controls.Add(this.dgvShowData);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "Chef_Display";
-            this.Text = "Chef_Display";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvShowData)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(957, 629);
+            Controls.Add(btnRefresh);
+            Controls.Add(btnConfirm);
+            Controls.Add(dgvShowData);
+            Name = "Chef_Display";
+            Text = "Chef_Display";
+            ((System.ComponentModel.ISupportInitialize)dgvShowData).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
