@@ -40,7 +40,7 @@ namespace order_management
             dt.Columns.Add(new DataColumn("Price", typeof(double)));
 
             //Get from DB 
-            List<Product> ProductDB = this._productService.GetAll();
+            List<Product> ProductDB = this._productService.GetAll().Where(x => x.Status == true).ToList();
 
 
             //Add rows to table
