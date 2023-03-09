@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Repository.Models
 {
-    public partial class Product
+    public partial class Product : IComparable<Product>
     {
         public Product()
         {
@@ -16,7 +16,13 @@ namespace Repository.Models
         public string ProductName { get; set; }
         public double Price { get; set; }
         public bool Status { get; set; }
+        public DateTime DateCreated { get; set; }
 
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+
+        public int CompareTo(Product other)
+        {
+            return this.DateCreated.CompareTo(other.DateCreated)*(-1);
+        }
     }
 }

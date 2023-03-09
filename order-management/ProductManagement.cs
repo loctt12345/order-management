@@ -17,6 +17,15 @@ namespace order_management
         public ProductManagement()
         {
             InitializeComponent();
+            var products = productRepo.GetAll()
+                    .Where(p => p.Status == true)
+                    .ToList();
+            products.Sort();
+            dgvProductList.DataSource = products;
+            dgvProductList.Columns[0].Visible = false;
+            dgvProductList.Columns[4].Visible = false;
+            dgvProductList.Columns[5].Visible = false;
+            dgvProductList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void btnShowAll_Click(object sender, EventArgs e)
@@ -29,8 +38,12 @@ namespace order_management
                 var products = productRepo.GetAll()
                     .Where(p => p.Status == true)
                     .ToList();
+                products.Sort();
                 dgvProductList.DataSource = products;
+                dgvProductList.Columns[0].Visible = false;
                 dgvProductList.Columns[4].Visible = false;
+                dgvProductList.Columns[5].Visible = false;
+                dgvProductList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch (Exception ex)
             {
@@ -176,7 +189,6 @@ namespace order_management
                 var productService = new ProductService();
                 var product = productService.Search(keyword);
                 dgvProductList.DataSource = product;
-                MessageBox.Show("Search Sucessful");
 
             }
             catch (Exception ex)

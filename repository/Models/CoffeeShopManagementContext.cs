@@ -34,13 +34,12 @@ namespace Repository.Models
                 optionsBuilder.UseSqlServer(GetConnectionString());
             }
         }
-        public string GetConnectionString()
+        private string GetConnectionString()
         {
             IConfiguration config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", true, true)
                 .Build();
-            
             var strConn = config["ConnectionStrings:CoffeeShopManagement"];
             return strConn;
         }
@@ -116,6 +115,10 @@ namespace Repository.Models
                 entity.ToTable("Product");
 
                 entity.Property(e => e.ProductId).ValueGeneratedNever();
+
+                entity.Property(e => e.DateCreated)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("(getdate())");
 
                 entity.Property(e => e.ProductName).IsRequired();
             });

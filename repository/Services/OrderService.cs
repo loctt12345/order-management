@@ -49,5 +49,10 @@ namespace Repository.Services
             return this._orderRepository.GetAll()
                 .Where(order => order.OrderId.Equals(id)).FirstOrDefault();
         }
+        public List<PrimaryOrder> GetByIdContains(string id)
+        {
+            return this._orderRepository.GetAll()
+                .Where(order => order.OrderId.ToString().Contains(id)).ToList();
+        }
     }
 }

@@ -22,21 +22,28 @@ namespace order_management
         public OrderScreen()
         {
             InitializeComponent();
-
             orderTable.Columns.Add("OrderId", typeof(Guid));
             orderTable.Columns.Add("EmployeeId", typeof(Guid));
             orderTable.Columns.Add("Date", typeof(DateTime));
             orderTable.Columns.Add("Total", typeof(double));
             orderTable.Columns.Add("Status", typeof(int));
             var list = this._orderService.GetAll();
+            list.Sort();
             foreach (PrimaryOrder order in list)
             {
-                orderTable.Rows.Add(order.OrderId, order.EmployeeId, 
-                    order.OrderDate, order.Total, order.Status);
+                DataRow row = orderTable.NewRow();
+                row["OrderId"] = order.OrderId;
+                row["EmployeeId"] = order.EmployeeId;
+                row["Date"] = order.OrderDate;
+                row["Total"] = order.Total;
+                row["Status"] = order.Status;
+                orderTable.Rows.Add(row);
             }
-            orderTable.DefaultView.Sort = "Date DESC";
             dgvOrder.DataSource = orderTable;
-            dgvOrder.Columns["Status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvOrder.Columns["EmployeeId"].Visible = false;
+            dgvOrder.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvOrder.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dgvOrder.Columns["OrderId"].Visible = false;
             dgvOrder.ReadOnly = true;
             dgvOrder.AllowUserToAddRows = false;
             orderTable.AcceptChanges();
@@ -54,21 +61,44 @@ namespace order_management
                 OrderDetails = new List<OrderDetail>()
             };
 
-            
+
             AddOrderScreen form = new AddOrderScreen(order, this.orderTable);
             form.Show();
+            this.btnRefresh_Click(sender, e);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
             try
             {
-                Guid orderId = Guid.Parse(txtOrderID.Text);
-                PrimaryOrder order = _orderService.GetById(orderId);
-                order.OrderDetails = _orderDetailService.GetByOrderId(orderId);
+                String orderId = txtOrderID.Text;
+                List<PrimaryOrder> orderList = _orderService.GetByIdContains(orderId);
                 txtOrderID.Text = "";
-                AddOrderScreen form = new AddOrderScreen(order, this.orderTable);
-                form.Show();
+                orderTable = new DataTable();
+                orderTable.Columns.Add("OrderId", typeof(Guid));
+                orderTable.Columns.Add("EmployeeId", typeof(Guid));
+                orderTable.Columns.Add("Date", typeof(DateTime));
+                orderTable.Columns.Add("Total", typeof(double));
+                orderTable.Columns.Add("Status", typeof(int));
+                orderList.Sort();
+                foreach (PrimaryOrder order in orderList)
+                {
+                    DataRow row = orderTable.NewRow();
+                    row["OrderId"] = order.OrderId;
+                    row["EmployeeId"] = order.EmployeeId;
+                    row["Date"] = order.OrderDate.ToShortDateString();
+                    row["Total"] = order.Total;
+                    row["Status"] = order.Status;
+                    orderTable.Rows.Add(row);
+                }
+                dgvOrder.DataSource = orderTable;
+                dgvOrder.Columns["EmployeeId"].Visible = false;
+                dgvOrder.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgvOrder.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+                //dgvOrder.Columns["OrderId"].Visible = false;
+                dgvOrder.ReadOnly = true;
+                dgvOrder.AllowUserToAddRows = false;
+                orderTable.AcceptChanges();
             }
             catch (Exception)
             {
@@ -85,6 +115,35 @@ namespace order_management
             order.OrderDetails = _orderDetailService.GetByOrderId(orderId);
             AddOrderScreen form = new AddOrderScreen(order, this.orderTable);
             form.Show();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            orderTable = new DataTable();
+            orderTable.Columns.Add("OrderId", typeof(Guid));
+            orderTable.Columns.Add("EmployeeId", typeof(Guid));
+            orderTable.Columns.Add("Date", typeof(DateTime));
+            orderTable.Columns.Add("Total", typeof(double));
+            orderTable.Columns.Add("Status", typeof(int));
+            var list = this._orderService.GetAll();
+            list.Sort();
+            foreach (PrimaryOrder order in list)
+            {
+                DataRow row = orderTable.NewRow();
+                row["OrderId"] = order.OrderId;
+                row["EmployeeId"] = order.EmployeeId;
+                row["Date"] = order.OrderDate;
+                row["Total"] = order.Total;
+                row["Status"] = order.Status;
+                orderTable.Rows.Add(row);
+            }
+            dgvOrder.DataSource = orderTable;
+            dgvOrder.Columns["EmployeeId"].Visible = false;
+            dgvOrder.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvOrder.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dgvOrder.ReadOnly = true;
+            dgvOrder.AllowUserToAddRows = false;
+            orderTable.AcceptChanges();
         }
     }
 }

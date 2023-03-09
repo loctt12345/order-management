@@ -19,8 +19,8 @@ namespace order_management
             dgvShowData.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             dgvShowData.Columns[0].HeaderCell.Value = "Order ID";
-            dgvShowData.Columns[0].Width = 50;
-            dgvShowData.Columns[1].Width = 100;
+            dgvShowData.Columns[0].Visible = false;
+            dgvShowData.Columns[1].Width = 150;
             dgvShowData.Columns[2].Width = 100;
             dgvShowData.Columns[3].Width = 100;
             dgvShowData.Columns[4].Width = 500;

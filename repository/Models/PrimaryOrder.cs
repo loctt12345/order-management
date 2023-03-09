@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Repository.Models
 {
-    public partial class PrimaryOrder
+    public partial class PrimaryOrder : IComparable<PrimaryOrder>
     {
         public PrimaryOrder()
         {
@@ -22,5 +22,10 @@ namespace Repository.Models
         public virtual Employee Employee { get; set; }
         public virtual Status StatusNavigation { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+
+        public int CompareTo(PrimaryOrder other)
+        {
+            return this.OrderDate.CompareTo(other.OrderDate)*(-1);
+        }
     }
 }
